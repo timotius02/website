@@ -1,6 +1,6 @@
 ### Source Code for http://timsitorus.com
 
-* Contains both gulp configurations for development
+* Contains gulp configurations for development and Sass files for styles
 * To run dev environment via gulp:
 
 1 ) Install bower & npm dependencies
