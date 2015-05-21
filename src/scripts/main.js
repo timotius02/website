@@ -7,6 +7,34 @@
 
 var projects = require('./projects');
 
+var Projects = React.createClass({
+	render: function() {
+		return ( 
+			<section id="projects" className="show">
+				<h2 className="title">
+          Recent Projects
+        </h2>
+        <CardLayout />
+    </section>
+    )
+	}
+});
+
+var CardLayout = React.createClass({
+	getInitialState: function(){
+		return {projects: projects};
+	},
+	render: function(){
+		var cards = this.state.projects.map(function(cardInfo){
+			return <Card {...cardInfo}/>
+		});
+		return (
+        <div className="cardLayout">
+        	{cards}
+        </div>
+		)
+	}
+});
 var Card = React.createClass({
 	getDefaultProps: function() {
 		return projects[0];
@@ -35,4 +63,4 @@ var Card = React.createClass({
 
 
 
-React.render(<Card />, document.getElementById('card'));
+React.render(<Projects />, document.getElementById('projects'));
