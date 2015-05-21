@@ -63,4 +63,4 @@ var Card = React.createClass({
 
 
 
-React.render(<Projects />, document.getElementById('projects'));
+React.render(<Projects />, document.getElementById('Projects'));

@@ -549,6 +549,9 @@ section#projects {
 }
 
 section#projects .cardLayout {
+    max-width: 1200px;
+    display: block;
+    margin: auto;
     .card#nycloop {
         // background-color: #39275b;
         .textArea {
