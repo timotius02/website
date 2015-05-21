@@ -6,6 +6,7 @@
 // })();
 
 var projects = require('./projects');
+var React = require('react');
 
 var Projects = React.createClass({
 	render: function() {
@@ -48,7 +49,7 @@ var Card = React.createClass({
         <li id={this.props.id} className="card">
           <img src={this.props.imgSrc} alt={this.props.title} className="photo"/>
           <div className="textArea">
-            <h3 className="title"> {this.props.title}</h3>
+            <h3 className="title"> {this.props.title} </h3>
             <p className="description" dangerouslySetInnerHTML={getDesc.call(this)}>
                 
             </p>

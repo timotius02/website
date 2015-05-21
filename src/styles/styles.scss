@@ -1,7 +1,11 @@
 @import "bourbon";
+@import "fonts";
+
 $perspective: 40000;
 $baseLength: 100px;
 $white: #ecf0f1;
+
+$num-projects: 9;
 
 @mixin absoluteCentering {
     margin: auto;
@@ -10,14 +14,6 @@ $white: #ecf0f1;
     left: 0;
     bottom: 0;
     right: 0;
-}
-
-@font-face {
-    font-family: 'bariol_regular';
-    src: url('../fonts/bariol_regular-webfont.eot');
-    src: url('../fonts/bariol_regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/bariol_regular-webfont.woff2') format('woff2'), url('../fonts/bariol_regular-webfont.woff') format('woff'), url('../fonts/bariol_regular-webfont.ttf') format('truetype'), url('../fonts/bariol_regular-webfont.svg#bariol_regularregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
 }
 
 @include keyframes(fadein) {
@@ -481,56 +477,15 @@ section#projects {
         -webkit-animation-delay: 0ms, 0ms;
         animation-delay: 0ms, 0ms;
     }
-    section#projects.show .cardLayout>a:nth-child(0) .card {
-        @include cardAnimation;
-        -webkit-animation-delay: 200ms, 200ms;
-        animation-delay: 200ms, 200ms;
+    @for $i from 0 through $num-projects {
+        section#projects.show .cardLayout>a:nth-child(#{$i}) .card {
+            @include cardAnimation;
+            $delay: 200ms + ($i * 150ms);
+            -webkit-animation-delay: $delay, $delay;
+            animation-delay: $delay, $delay;
+        }
     }
-    section#projects.show .cardLayout>a:nth-child(1) .card {
-        @include cardAnimation;
-        -webkit-animation-delay: 350ms, 350ms;
-        animation-delay: 350ms, 350ms;
-    }
-    section#projects.show .cardLayout>a:nth-child(2) .card {
-        @include cardAnimation;
-        -webkit-animation-delay: 500ms, 500ms;
-        animation-delay: 500ms, 500ms;
-    }
-    section#projects.show .cardLayout>a:nth-child(3) .card {
-        @include cardAnimation;
-        -webkit-animation-delay: 650ms, 650ms;
-        animation-delay: 650ms, 650ms;
-    }
-    section#projects.show .cardLayout>a:nth-child(4) .card {
-        @include cardAnimation;
-        -webkit-animation-delay: 800ms, 800ms;
-        animation-delay: 800ms, 800ms;
-    }
-    section#projects.show .cardLayout>a:nth-child(5) .card {
-        @include cardAnimation;
-        -webkit-animation-delay: 950ms, 950ms;
-        animation-delay: 950ms, 950ms;
-    }
-    section#projects.show .cardLayout>a:nth-child(6) .card {
-        @include cardAnimation;
-        -webkit-animation-delay: 1100ms, 1100ms;
-        animation-delay: 1100ms, 1100ms;
-    }
-    section#projects.show .cardLayout>a:nth-child(7) .card {
-        @include cardAnimation;
-        -webkit-animation-delay: 1250ms, 1250ms;
-        animation-delay: 1250ms, 1250ms;
-    }
-    section#projects.show .cardLayout>a:nth-child(8) .card {
-        @include cardAnimation;
-        -webkit-animation-delay: 1400ms, 1400ms;
-        animation-delay: 1400ms, 1400ms;
-    }
-    section#projects.show .cardLayout>a:nth-child(9) .card {
-        @include cardAnimation;
-        -webkit-animation-delay: 1550ms, 1550ms;
-        animation-delay: 1550ms, 1550ms;
-    }
+
 }
 
 @media not all and (min-width: 1000px) {
