@@ -5,17 +5,22 @@
 var http = require('http');
 
 // Load plugins
-var gulp = require('gulp'),
-    del = require('del');
-
+var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var del = require('del');
 var browserSync = require('browser-sync');
+
+// Browserify + JSX compilation
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var browserify = require('browserify');
+var reactify = require('reactify');
+
 
 // HTML minification
 gulp.task('html', function() {
     gulp.src('src/*.html')
-        .pipe(gulp.dest('dist'))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest('dist'));
 });
 
 // Styles
@@ -25,27 +30,34 @@ gulp.task('styles', function() {
             includePaths: require('node-bourbon').includePaths,
             errLogToConsole: true
         }))
+        .pipe(gulp.dest('dist/styles'))
         .pipe($.rename({
             suffix: '.min'
         }))
         .pipe($.minifyCss())
-        .pipe(gulp.dest('dist/styles'))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest('dist/styles'));
 });
 
 // Scripts
 gulp.task('scripts', function() {
-    return gulp.src('src/scripts/**/*.js')
-        .pipe($.jshint('.jshintrc'))
-        .pipe($.jshint.reporter('default'))
-        .pipe($.concat('main.js'))
+    var b = browserify({
+        entries: 'src/scripts/main.js',
+        transform: [reactify],
+        debug: true,
+        cache: {},
+        packageCache: {},
+        fullPaths: true
+    });
+
+    return b.bundle()
+        .pipe(source('main.js'))
+        .pipe(buffer())
         .pipe(gulp.dest('dist/scripts'))
         .pipe($.rename({
             suffix: '.min'
         }))
         .pipe($.uglify())
-        .pipe(gulp.dest('dist/scripts'))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest('dist/scripts'));
 });
 
 // Images
@@ -56,14 +68,12 @@ gulp.task('images', function() {
             progressive: true,
             interlaced: true
         })))
-        .pipe(gulp.dest('dist/images'))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('fonts', function() {
     return gulp.src('src/fonts/*')
-        .pipe(gulp.dest('dist/fonts'))
-        .pipe(browserSync.stream());
+        .pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('clearCache', function() {
@@ -75,6 +85,7 @@ gulp.task('clearCache', function() {
     cache.clearAll();
 });
 
+
 // Clean
 gulp.task('clean', function(cb) {
     del(['dist/styles/*', 'dist/scripts/*', 'dist/images/*', 'dist/fonts/*', 'dist/*.html'], cb);
@@ -84,6 +95,9 @@ gulp.task('init', ['clean'], function(cb) {
     gulp.start('html', 'styles', 'scripts', 'images', 'fonts');
 });
 
+gulp.task('reload', browserSync.reload);
+
+
 // Watch
 gulp.task('watch', function() {
 
@@ -92,20 +106,21 @@ gulp.task('watch', function() {
         notify: false
     });
 
+
     // Watch html files
-    gulp.watch('src/*.html', ['html']);
+    gulp.watch('src/*.html', ['html', 'reload']);
 
     // Watch .scss files
-    gulp.watch('src/styles/**/*.scss', ['styles']);
+    gulp.watch('src/styles/**/*.scss', ['styles', 'reload']);
 
     // Watch .js files
-    gulp.watch('src/scripts/**/*.js', ['scripts']);
+    gulp.watch('src/scripts/**/*.js', ['scripts', 'reload']);
 
     // Watch image files
-    gulp.watch('src/images/**/*', ['images']);
+    gulp.watch('src/images/**/*', ['images', 'reload']);
 
     // Watch image files
-    gulp.watch('src/fonts/**/*', ['fonts']);
+    gulp.watch('src/fonts/**/*', ['fonts', 'reload']);
 
     // Watch any files in dist/, reload on change
     //gulp.watch(['dist/**']).on('change', livereload.changed);

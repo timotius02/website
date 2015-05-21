@@ -7,36 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Timotius Sitorus: Web developer and Hackathon Hacker">
     <meta name="author" content="Timotius Sitorus">
-
-        <!--[if lt IE 9]>
+    <!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
     <title>Timotius Sitorus</title>
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
     <link rel="stylesheet" href="styles/styles.min.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Google Analytics -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-58116715-1', 'auto');
-      ga('send', 'pageview');
-
-    </script>
-    <!-- End Google Analytics -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.min.js"></script>
 </head>
 
 <body>
-    
-
     <header id="header">
         <h1>TIMOTIUS SITORUS</h1>
         <h2>Software Developer &amp; Hackathon Hacker</h2>
@@ -55,18 +38,12 @@
             </div>
         </div>
         <span class="explore">Hello World!</span>
-
     </header>
-
     <section id="intro">
-
         <div class="column">
-
             <p>My name is Timotius Sitorus. I am currently studying Computer Science at Stony Brook University. I am a hackathon enthusiast, web developer, hardware hacker, musician, and entrepreneur.
-
                 <br>
                 <br> I &#9829; building awesome things
-
             </p>
             <ul class="social">
                 <li class="link-github">
@@ -74,209 +51,210 @@
                         <img src="/images/github_hover.svg" width="43" height="43"> Github
                     </a>
                 </li>
-
                 <li class="link-linkedin">
                     <a href="https://www.linkedin.com/in/timotius02">
                         <img src="/images/linkedin_hover.svg" width="43" height="43"> Linkedin
                     </a>
                 </li>
-
                 <li class="link-twitter">
                     <a href="https://twitter.com/timsitorus1">
                         <img src="/images/twitter_hover.svg" width="43" height="43"> Twitter
                     </a>
                 </li>
-
                 <li class="link-medium">
                     <a href="https://medium.com/@timotiussitorus">
                         <img src="images/medium_hover.svg" width="43" height="43"> Medium
                     </a>
                 </li>
-
                 <li class="link-mail">
                     <a href="mailto:timsitorus1@gmail.com">
                         <img src="images/mail_hover.svg" width="43" height="43"> Email
                     </a>
                 </li>
-
             </ul>
-
         </div>
         <!-- <p>If you want to learn more about me</h3>
         <a href="/resume.pdf" class="btn"><img src="images/icon_mail_white.svg">Resume</a> -->
-
     </section>
     <section id="projects" class="show">
         <h2 class="title">
           Recent Projects
         </h2>
         <div class="cardLayout">
-          <a href="http://challengepost.com/software/headlights">
-            <li id="headlights" class="card">
-              <img src="images/thalmic.svg" alt="HeadLights" class="photo">
-              <div class="textArea">
-                <h3 class="title">
+            <!-- <a href="http://challengepost.com/software/headlights">
+                <li id="headlights" class="card">
+                    <img src="images/thalmic.svg" alt="HeadLights" class="photo">
+                    <div class="textArea">
+                        <h3 class="title">
                   HeadLights
                 </h3>
-                <p class="description">
-                  Intuitive turn signals for bikers using the Myo. Winner of 2<sup>nd</sup> place at YHack 2014.
-                </p>
-              </div>
-            </li>
-          </a>
-          <a href="http://www.btton.co/">
-            <li id="bttonco" class="card">
-              <img src="images/bttonco.png" alt="bttonco" class="photo">
-              <div class="textArea">
-                <h3 class="title">
+                        <p class="description">
+                            Intuitive turn signals for bikers using the Myo. Winner of 2<sup>nd</sup> place at YHack 2014.
+                        </p>
+                    </div>
+                </li>
+            </a> -->
+            <a id="card" href="http://challengepost.com/software/headlights"></a>
+            <a href="http://www.btton.co/">
+                <li id="bttonco" class="card">
+                    <img src="images/bttonco.png" alt="bttonco" class="photo">
+                    <div class="textArea">
+                        <h3 class="title">
                   Btton.co
                 </h3>
-                <p class="description">
-                  Multi-purpose Smart jacket using the Intel&reg; Edison. Winner of 1<sup>st</sup> place at Intel&reg; IoT Roadshow NYC.
-                </p>
-              </div>
-            </li>
-          </a>
-          <a href="http://livecodenow.herokuapp.com/">
-            <li id="livecode" class="card">
-              <img src="images/livecode.png" alt="Live_Code" class="photo">
-              <div class="textArea">
-                <h3 class="title">
+                        <p class="description">
+                            Multi-purpose Smart jacket using the Intel&reg; Edison. Winner of 1<sup>st</sup> place at Intel&reg; IoT Roadshow NYC.
+                        </p>
+                    </div>
+                </li>
+            </a>
+            <a href="http://livecodenow.herokuapp.com/">
+                <li id="livecode" class="card">
+                    <img src="images/livecode.png" alt="Live_Code" class="photo">
+                    <div class="textArea">
+                        <h3 class="title">
                   LiveCode
                 </h3>
-                <p class="description">
-                  Real time web-chatting and coding collaboration platform
-                </p>
-              </div>
-            </li>
-          </a>
-          <a href="http://graphics3d.herokuapp.com/">
-            <li id="graphics3d" class="card">
-              <img src="images/graphics3d.svg" alt="Graphics3D" class="photo">
-              <div class="textArea">
-                <h3 class="title">
+                        <p class="description">
+                            Real time web-chatting and coding collaboration platform
+                        </p>
+                    </div>
+                </li>
+            </a>
+            <a href="http://graphics3d.herokuapp.com/">
+                <li id="graphics3d" class="card">
+                    <img src="images/graphics3d.svg" alt="Graphics3D" class="photo">
+                    <div class="textArea">
+                        <h3 class="title">
                   Graphics3D
                 </h3>
-                <p class="description">
-                  3D wireframe engine utilizing the Back-Face Culling Algorithm.
-                </p>
-              </div>
-            </li>
-          </a>
-          <a href="http://www.mobilewebarcade.com/games/colorchase/">
-            <li id="colorchase" class="card">
-              <img src="images/colorchase.svg" alt="ColorChase" class="photo">
-              <div class="textArea">
-                <h3 class="title">
+                        <p class="description">
+                            3D wireframe engine utilizing the Back-Face Culling Algorithm.
+                        </p>
+                    </div>
+                </li>
+            </a>
+            <a href="http://www.mobilewebarcade.com/games/colorchase/">
+                <li id="colorchase" class="card">
+                    <img src="images/colorchase.svg" alt="ColorChase" class="photo">
+                    <div class="textArea">
+                        <h3 class="title">
                   ColorChase
                 </h3>
-                <p class="description">
-                  Brain-training game that tests the user’s memory. Winner of 1<sup>st</sup> place at the Spring Break Game Jam. 
-                </p>
-              </div>
-            </li>
-          </a>
-          <a href="http://myopingpong.herokuapp.com/">
-            <li id="myopong" class="card">
-              <img src="images/myopong.svg" alt="MyoPong" class="photo">
-              <div class="textArea">
-                <h3 class="title">
+                        <p class="description">
+                            Brain-training game that tests the user’s memory. Winner of 1<sup>st</sup> place at the Spring Break Game Jam.
+                        </p>
+                    </div>
+                </li>
+            </a>
+            <a href="http://myopingpong.herokuapp.com/">
+                <li id="myopong" class="card">
+                    <img src="images/myopong.svg" alt="MyoPong" class="photo">
+                    <div class="textArea">
+                        <h3 class="title">
                   MyoPong
                 </h3>
-                <p class="description">
-                  Multiplayer Pong . . . controlled by the Myo!
-                </p>
-              </div>
-            </li>
-          </a>
-          <a href="https://github.com/timotius02/yo-rss">
-            <li id="yorss" class="card">
-              <img src="images/yorss.jpg" alt="Yo-RSS" class="photo">
-              <div class="textArea">
-                <h3 class="title">
+                        <p class="description">
+                            Multiplayer Pong . . . controlled by the Myo!
+                        </p>
+                    </div>
+                </li>
+            </a>
+            <a href="https://github.com/timotius02/yo-rss">
+                <li id="yorss" class="card">
+                    <img src="images/yorss.jpg" alt="Yo-RSS" class="photo">
+                    <div class="textArea">
+                        <h3 class="title">
                   Yo-RSS
                 </h3>
-                <p class="description">
-                  Real Time RSS feed for Yo inspired by Google's Material Design.
-                </p>
-              </div>
-            </li>
-          </a>
-          <a href="http://timsitorus.com/snapscan/">
-            <li id="snapscan" class="card">
-              <img src="images/snapscan.svg" alt="Snapscan" class="photo">
-              <div class="textArea">
-                <h3 class="title">
+                        <p class="description">
+                            Real Time RSS feed for Yo inspired by Google's Material Design.
+                        </p>
+                    </div>
+                </li>
+            </a>
+            <a href="http://timsitorus.com/snapscan/">
+                <li id="snapscan" class="card">
+                    <img src="images/snapscan.svg" alt="Snapscan" class="photo">
+                    <div class="textArea">
+                        <h3 class="title">
                   Snapscan
                 </h3>
-                <p class="description">
-                  Website design for educational mobile app that helps streamline the classroom experience
-                </p>
-              </div>
-            </li>
-          </a>
-          <a href="https://github.com/timotius02/nycloop">
-            <li id="nycloop" class="card">
-              <img src="images/nycloop.svg" alt="NYC Loop" class="photo">
-              <div class="textArea">
-                <h3 class="title">
+                        <p class="description">
+                            Website design for educational mobile app that helps streamline the classroom experience
+                        </p>
+                    </div>
+                </li>
+            </a>
+            <a href="https://github.com/timotius02/nycloop">
+                <li id="nycloop" class="card">
+                    <img src="images/nycloop.svg" alt="NYC Loop" class="photo">
+                    <div class="textArea">
+                        <h3 class="title">
                   NYC Loop
                 </h3>
-                <p class="description">
-                  App that allows teens to create, share, and discover events in NYC
-                </p>
-              </div>
-            </li>
-          </a>
+                        <p class="description">
+                            App that allows teens to create, share, and discover events in NYC
+                        </p>
+                    </div>
+                </li>
+            </a>
         </div>
-      </section>
-
+    </section>
     <section id="contact">
         <h3>If you want to learn more about me</h3>
         <a href="/resume.pdf" class="btn"><img src="images/icon_mail_white.svg">Resume</a>
-
     </section>
-
     <footer id="footer">
         <p>© 2014 <a href="mailto:timsitorus1@gmail.com" class="link-focus">Timotius Sitorus.</a> Made with &#9829; in NYC.</p>
-
         <ul class="social">
-                <li class="link-github">
-                    <a href="https://github.com/timotius02">
-                        <img src="/images/github_hover.svg" width="43" height="43"> Github
-                    </a>
-                </li>
-
-                <li class="link-linkedin">
-                    <a href="https://www.linkedin.com/in/timotius02">
-                        <img src="/images/linkedin_hover.svg" width="43" height="43"> Linkedin
-                    </a>
-                </li>
-
-                <li class="link-twitter">
-                    <a href="https://twitter.com/timsitorus1">
-                        <img src="/images/twitter_hover.svg" width="43" height="43"> Twitter
-                    </a>
-                </li>
-
-                <li class="link-medium">
-                    <a href="https://medium.com/@timotiussitorus">
-                        <img src="images/medium_hover.svg" width="43" height="43"> Medium
-                    </a>
-                </li>
-
-                <li class="link-mail">
-                    <a href="mailto:timsitorus1@gmail.com">
-                        <img src="images/mail_hover.svg" width="43" height="43"> Email
-                    </a>
-                </li>
-
-            </ul>
-
+            <li class="link-github">
+                <a href="https://github.com/timotius02">
+                    <img src="/images/github_hover.svg" width="43" height="43"> Github
+                </a>
+            </li>
+            <li class="link-linkedin">
+                <a href="https://www.linkedin.com/in/timotius02">
+                    <img src="/images/linkedin_hover.svg" width="43" height="43"> Linkedin
+                </a>
+            </li>
+            <li class="link-twitter">
+                <a href="https://twitter.com/timsitorus1">
+                    <img src="/images/twitter_hover.svg" width="43" height="43"> Twitter
+                </a>
+            </li>
+            <li class="link-medium">
+                <a href="https://medium.com/@timotiussitorus">
+                    <img src="images/medium_hover.svg" width="43" height="43"> Medium
+                </a>
+            </li>
+            <li class="link-mail">
+                <a href="mailto:timsitorus1@gmail.com">
+                    <img src="images/mail_hover.svg" width="43" height="43"> Email
+                </a>
+            </li>
+        </ul>
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="scripts/main.min.js"></script>
+    <!-- Google Analytics -->
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
+    ga('create', 'UA-58116715-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
 </body>
 
 </html>
