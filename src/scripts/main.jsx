@@ -1,23 +1,25 @@
 // (function(){
 
-// 	$('.explore').click(function(){
-// 		$('#intro').ScrollTo();
-// 	});
 // })();
 
 var projects = require('./projects');
 var React = require('react');
+global.jQuery = require('jquery');
+
+jQuery('.explore').click(function() {
+    jQuery('#intro').ScrollTo();
+});
 
 var Projects = React.createClass({
 	render: function() {
 		return ( 
 			<section id="projects" className="show">
 				<h2 className="title">
-          Recent Projects
-        </h2>
-        <CardLayout />
-    </section>
-    )
+	          		Recent Projects
+	        	</h2>
+	        <CardLayout />
+	    </section>
+	    )
 	}
 });
 

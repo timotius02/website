@@ -2,7 +2,8 @@
  * gulp web development setup for SCSS + Minification
  * by Timotius Sitorus
  */
-var http = require('http');
+// Utilities
+var gutil = require('gulp-util');
 
 // Load plugins
 var gulp = require('gulp');
@@ -14,18 +15,22 @@ var browserSync = require('browser-sync');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
+var watchify = require('watchify');
 var reactify = require('reactify');
-
 
 // HTML minification
 gulp.task('html', function() {
-    gulp.src('src/*.html')
+    return gulp.src('src/*.html')
         .pipe(gulp.dest('dist'));
 });
 
 // Styles
 gulp.task('styles', function() {
     return gulp.src('src/styles/**/*.scss')
+        .on('error', function(err) {
+            gutil.log(err.message);
+            this.emit("end");
+        })
         .pipe($.sass({
             includePaths: require('node-bourbon').includePaths,
             errLogToConsole: true
@@ -40,24 +45,37 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-    var b = browserify({
-        entries: 'src/scripts/main.js',
+    var bundler = watchify(browserify({
+        entries: 'src/scripts/main.jsx',
         transform: [reactify],
         debug: true,
         cache: {},
         packageCache: {},
         fullPaths: true
-    });
+    }));
 
-    return b.bundle()
-        .pipe(source('main.js'))
-        .pipe(buffer())
-        .pipe(gulp.dest('dist/scripts'))
-        .pipe($.rename({
-            suffix: '.min'
-        }))
-        .pipe($.uglify())
-        .pipe(gulp.dest('dist/scripts'));
+    var bundle = function() {
+        return bundler.bundle()
+            .on('error', function(err) {
+                gutil.log(err.message);
+                browserSync.notify("Browserify Error!");
+                this.emit("end");
+            })
+            .pipe(source('main.js'))
+            .pipe(buffer())
+            .pipe(gulp.dest('dist/scripts'))
+            .pipe($.rename({
+                suffix: '.min'
+            }))
+            .pipe($.uglify())
+            .pipe(gulp.dest('dist/scripts'));
+    }
+
+    // On updates recompile
+    bundler.on('update', bundle);
+
+    return bundle();
+
 });
 
 // Images
@@ -82,7 +100,7 @@ gulp.task('clearCache', function() {
         .pipe($.cache.clear());
 
     // Or, just call this for everything
-    cache.clearAll();
+    $.cache.clearAll();
 });
 
 
@@ -101,12 +119,6 @@ gulp.task('reload', browserSync.reload);
 // Watch
 gulp.task('watch', function() {
 
-    browserSync.init({
-        server: "./dist",
-        notify: false
-    });
-
-
     // Watch html files
     gulp.watch('src/*.html', ['html', 'reload']);
 
@@ -114,7 +126,7 @@ gulp.task('watch', function() {
     gulp.watch('src/styles/**/*.scss', ['styles', 'reload']);
 
     // Watch .js files
-    gulp.watch('src/scripts/**/*.js', ['scripts', 'reload']);
+    gulp.watch('src/scripts/**/*', ['scripts', 'reload']);
 
     // Watch image files
     gulp.watch('src/images/**/*', ['images', 'reload']);
@@ -122,8 +134,11 @@ gulp.task('watch', function() {
     // Watch image files
     gulp.watch('src/fonts/**/*', ['fonts', 'reload']);
 
-    // Watch any files in dist/, reload on change
-    //gulp.watch(['dist/**']).on('change', livereload.changed);
+    browserSync.init({
+        logPrefix: 'BS',
+        server: "./dist",
+        notify: false
+    });
 
 });
 
