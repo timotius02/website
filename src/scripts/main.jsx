@@ -1,7 +1,3 @@
-// (function(){
-
-// })();
-
 var projects = require('./projects');
 var React = require('react');
 global.jQuery = require('jquery');
@@ -17,8 +13,8 @@ var Projects = React.createClass({
 				<h2 className="title">
 	          		Recent Projects
 	        	</h2>
-	        <CardLayout />
-	    </section>
+	        	<CardLayout />
+	    	</section>
 	    )
 	}
 });
