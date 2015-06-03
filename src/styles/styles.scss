@@ -267,7 +267,7 @@ footer#footer {
     background: transparent;
     position: absolute;
     overflow: hidden;
-    @include box-sizing(border-box);
+    box-sizing: border-box;
 }
 
 .s1 {

@@ -45,6 +45,9 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
+    gulp.src('src/scripts/vendor/*.js')
+        .pipe(gulp.dest('dist/scripts/vendor'));
+
     var bundler = watchify(browserify({
         entries: 'src/scripts/main.jsx',
         transform: [reactify],
@@ -126,7 +129,7 @@ gulp.task('watch', function() {
     gulp.watch('src/styles/**/*.scss', ['styles', 'reload']);
 
     // Watch .js files
-    gulp.watch('src/scripts/**/*', ['scripts', 'reload']);
+    gulp.watch('src/scripts/**/*', ['reload']);
 
     // Watch image files
     gulp.watch('src/images/**/*', ['images', 'reload']);
